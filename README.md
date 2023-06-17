@@ -4,14 +4,16 @@
 
 ## Tech Stack
 
-- python 3.10
-- Flask
-- ECharts
-- MySQL
-- Heidisql
-- selenium
-- ChromeDriver
-- XPath: `find_elements`
+- ✅ python 3.10
+- ✅ Flask
+- ✅ ECharts
+- ✅ MySQL
+- ✅ Heidisql
+- ✅ selenium
+- ✅ ChromeDriver
+- ✅ XPath: `find_elements`
+- ✅ jquery
+- ✅ Ajax
 
 ## MySQL Database
 
