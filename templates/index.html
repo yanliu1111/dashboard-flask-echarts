@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>my page</title>
+    <script src="../static/js/jquery.js"></script>
+  </head>
+  <body>
+    <h1>Epidemic monitoring</h1>
+    <h3>timely reporting</h3>
+    <button>click me</button>
+    <script>
+      $("button").click(function () {
+        $.ajax({
+          url: "/ajax",
+          type: "POST",
+          data: {
+            name: "BOb",
+            age: 18,
+          },
+          success: function (data) {
+            $("h1").html("hello world" + data);
+          },
+          error: function () {
+            alert("error");
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
