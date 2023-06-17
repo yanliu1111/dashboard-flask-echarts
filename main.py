@@ -167,3 +167,21 @@ def get_baidu_hot():
 
     browser.close()
     return context
+
+def update_hotsearch():
+    cursor = None
+    conn = None
+    try:
+        context = get_baidu_hot()
+        print(f"{time.asctime()}start update hotsearch data")
+        conn,cursor = get_conn()
+        sql = "INSERT INTO hotsearch (dt, content) VALUES (%s, %s)"  # Specify both columns
+        ts = time.strftime("%Y-%m-%d %X")
+        for i in context:
+            cursor.execute(sql,(ts,i))
+        conn.commit()
+        print(f"{time.asctime()}complete update hotsearch data")
+    except:
+        traceback.print_exc()
+    finally:
+        close_conn(conn,cursor)
