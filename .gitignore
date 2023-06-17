@@ -114,4 +114,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+#data query
 *.sql
