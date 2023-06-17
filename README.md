@@ -9,6 +9,9 @@
 - ECharts
 - MySQL
 - Heidisql
+- selenium
+- ChromeDriver
+- XPath: `find_elements`
 
 ## MySQL Database
 
@@ -48,4 +51,14 @@ PRIMARY KEY (`id`) USING BTREE
 )
 ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 ;
+
+-- create new table
+USE YourDatabaseName;
+DROP TABLE IF EXISTS `hotsearch`;
+CREATE TABLE `hotsearch`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dt` datetime(0) NOT NULL ON UPDATE CURRENT_TIMESTAMP(0),
+  `content` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`, `dt`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARSET = UTF8MB4 ROW_FORMAT = Dynamic;
 ```
