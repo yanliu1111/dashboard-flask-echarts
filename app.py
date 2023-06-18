@@ -26,6 +26,15 @@ def get_c1_data():
         print("Dead:", dead)
         return response
 
+@app.route('/c2')
+def get_c2_data():
+    with app.app_context():
+        res = []
+        for tup in utils.get_c2_data():  # tup is a tuple means a row with two columns
+            res.append({"name": tup[0], "value": int(tup[1])})
+        print(res)
+        return jsonify({"data": res})
+
 if __name__ == "__main__":
     app.run()
     

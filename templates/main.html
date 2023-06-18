@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Epidemic Monitoring</title>
     <script src="../static/js/jquery.js"></script>
+    <!-- build China map -->
+    <script src="../static/js/echarts.min.js"></script>
+    <script src="../static/js/china.js"></script>
     <link rel="stylesheet" href="../static/css/main.css" />
     <style></style>
   </head>
@@ -27,39 +30,7 @@
     <div id="c2">middle2</div>
     <div id="r1">right1</div>
     <div id="r2">right2</div>
-    <script>
-      function getTime() {
-        $.ajax({
-          url: "/time",
-          timeout: 10000,
-          success: function (data) {
-            $("#time").html(data);
-          },
-          error: function (xhr, ajaxOptions, thrownError) {
-            alert(xhr.status);
-            alert(thrownError);
-          },
-        });
-      }
-
-      function get_c1_data() {
-        $.ajax({
-          url: "/c1",
-          success: function (data) {
-            $(".num h1").eq(0).text(data.confirm);
-            $(".num h1").eq(1).text(data.suspect);
-            $(".num h1").eq(2).text(data.heal);
-            $(".num h1").eq(3).text(data.dead);
-          },
-          error: function (xhr, ajaxOptions, thrownError) {
-            alert(xhr.status);
-            alert(thrownError);
-          },
-        });
-      }
-
-      setInterval(getTime, 1000);
-      setInterval(get_c1_data, 1000);
-    </script>
+    <script src="../static/js/ec_center.js"></script>
+    <script src="../static/js/controller.js"></script>
   </body>
 </html>

@@ -55,7 +55,13 @@ def get_c1_data():
     res = query(sql)
     return res[0]
 
-
+def get_c2_data():
+    sql = "select province,sum(confirm) from details " \
+          "where update_time=(select update_time from details " \
+          "order by update_time desc limit 1) " \
+          "group by province"
+    res = query(sql)
+    return res
 
 if __name__ == "__main__":
     print(get_time())
