@@ -92,4 +92,10 @@ get_l2_data();
 get_r1_data();
 get_r2_data();
 
-// setInterval(getTime, 1000);
+setInterval(getTime, 1000);
+setInterval(get_c1_data, 1000 * 10);
+setInterval(get_c2_data, 1000 * 10);
+setInterval(get_l1_data, 1000 * 10);
+setInterval(get_l2_data, 1000 * 10);
+setInterval(get_r1_data, 1000 * 10);
+setInterval(get_r2_data, 1000 * 10);
