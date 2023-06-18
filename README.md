@@ -15,6 +15,7 @@
 - ✅ jquery
 - ✅ Ajax
 - ✅ SQL-**CTE** (Common Table Expression) / Subquery
+- ✅ jieba (Chinese word segmentation for word cloud analysis)
 
 ## MySQL Database
 
