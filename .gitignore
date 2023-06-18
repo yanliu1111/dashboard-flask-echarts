@@ -116,3 +116,5 @@ dmypy.json
 
 #data query
 *.sql
+
+node_modules/
