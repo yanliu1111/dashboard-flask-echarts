@@ -73,5 +73,29 @@ def get_l2_data():
     res = query(sql)
     return res
 
+def get_r1_data():
+    sql = "WITH latest_update AS (SELECT update_time FROM details "\
+          "ORDER BY update_time DESC LIMIT 1), " \
+          "cte AS (SELECT city, confirm FROM details "\
+          "WHERE update_time = (SELECT update_time FROM latest_update) "\
+          "AND province NOT IN ('湖北', '北京', '上海', '天津', '重庆') "\
+          "UNION ALL " \
+          "SELECT province AS city, SUM(confirm) AS confirm FROM details "\
+          "WHERE update_time = (SELECT update_time FROM latest_update) "\
+          "AND province IN ('北京', '上海', '天津', '重庆') "\
+          "GROUP BY province),"\
+          "combined_table AS (SELECT city, "\
+          "CASE WHEN city = '北京' THEN 'beijing' "\
+          "WHEN city = '上海' THEN 'shanghai' "\
+          "WHEN city = '广州' THEN 'guangzhou' "\
+          "WHEN city = '深圳' THEN 'shenzhen' "\
+          "WHEN city = '重庆' THEN 'chongqing' "\
+          "ELSE city END AS city_en, confirm FROM cte) "\
+          "SELECT city_en, confirm FROM combined_table "\
+          "WHERE city IN ('北京', '上海', '广州', '深圳', '重庆');"
+                   
+    res = query(sql)
+    return res
+
 if __name__ == "__main__":
-    print(get_l1_data())
+    print(get_r1_data())

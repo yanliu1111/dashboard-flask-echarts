@@ -59,6 +59,17 @@ def get_l2_data():
         suspect_add.append(c)
     return jsonify({"day":day,"confirm_add":confirm_add,"suspect_add":suspect_add})
 
+@app.route('/r1')
+def get_r1_data():
+    with app.app_context():
+        data = utils.get_r1_data()
+        city = []
+        confirm = []
+        for k,v in data:
+            city.append(k)
+            confirm.append(int(v))
+        return jsonify({"city": city,"confirm": confirm})
+
 if __name__ == "__main__":
     app.run()
     
