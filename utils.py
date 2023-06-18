@@ -63,5 +63,15 @@ def get_c2_data():
     res = query(sql)
     return res
 
+def get_l1_data():
+    sql = "select ds,confirm,suspect,heal,dead from history"
+    res = query(sql)
+    return res
+
+def get_l2_data():
+    sql = "select ds,confirm_add,suspect_add from history"
+    res = query(sql)
+    return res
+
 if __name__ == "__main__":
-    print(get_time())
+    print(get_l1_data())
