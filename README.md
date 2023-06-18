@@ -78,6 +78,8 @@ CREATE TABLE `hotsearch`  (
 
 I would highly recomment it, especally work with **HeidiSQL** together 👍!
 
+**Cons and Pros:** There was bottleneck for dashboard loading data from cloud, for free tier user, there is **ONLY** 5 Max connection limit, so the data cannot show up in the dashboard when there are many subtables and figures keeping connecting to the database.
+
 2. ✨ CTE (Common Table Expression) for contional query
 
 ```python
