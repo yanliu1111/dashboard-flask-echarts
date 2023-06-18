@@ -1,6 +1,18 @@
 # Dashboard with Flask and ECharts
 
-## Introduction
+## 📊 Introduction
+
+In this project, I built a Pandemic Dashboard with Flask and ECharts. The data was crawled from Buidu using selenium-webdriver. The scrapped data includes the pandemic history and details data. Also scrapped the hot search data with real time from Buidu Hot Search. The data was automatically stored in MySQL cloud database. After manipulating and integrating the data using SQL query and subquery(CTE), the data was mapped seamlessly to the dashboard in utils.py and app.py and controller.js files.
+
+The dashboard with 6 mian partterns: The summary of the pandemic (center top), the pandemic number in China map view (center bottom), the updated-time cumulative trend and daily new cases trend (left), the top 5 cities with confirmed cases (right top), the current hot search (right bottom).
+
+<img
+style="display: block;
+margin-left: auto;
+margin-right: auto;"
+src="assets/demo.png"
+alt="roadmap">
+</img> <br>
 
 ## Tech Stack
 
@@ -19,7 +31,7 @@
 
 ## MySQL Database
 
-- Database name: `history` and `details`
+- Database name: `history` and `details` and `hotsearch`
 
 ```sql
 -- create new table
@@ -106,3 +118,11 @@ def get_r1_data():
 - **CTE** was used to create a temporary table, which combined the 4 cities and other cities together, then we can get the Top 5 cities confirmed cases.
 
   💡 **Note**: **CTE** is only available in MySQL 8.0 or above. I like to use subquery and CTE, make the query more logical and unit, and this is good example for using **CTE** for recommendation. 😀
+
+3. 📊 ECharts (Apache)
+
+   **ECharts** is a free, powerful charting and visualization library offering an easy way of adding intuitive, interactive, and highly customizable charts to your commercial products. It is written in pure JavaScript and based on zrender, which is a whole new lightweight canvas library.
+
+   In this project, I downloaded `echarts.min.js` and `china.js` and `worldcloud.js` as the main js files for the dashboard.
+
+   Then, for 6 pattern with different charts-type and custom design, I downloaded the source code from [ECharts](https://echarts.apache.org/examples/en/index.html), and modified them to fit my project.
