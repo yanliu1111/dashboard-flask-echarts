@@ -73,11 +73,23 @@ function get_r1_data() {
   });
 }
 
+function get_r2_data() {
+  $.ajax({
+    url: "/r2",
+    success: function (data) {
+      option_right2.series[0].data = data.kws;
+      ec_right2.setOption(option_right2);
+    },
+    error: function (xhr, type, errorThrown) {},
+  });
+}
+
 getTime();
 get_c1_data();
 get_c2_data();
 get_l1_data();
 get_l2_data();
 get_r1_data();
+get_r2_data();
 
 // setInterval(getTime, 1000);
