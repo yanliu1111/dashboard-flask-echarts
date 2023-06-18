@@ -6,8 +6,8 @@
 
 - ✅ python 3.10
 - ✅ Flask
-- ✅ ECharts
-- ✅ MySQL
+- ✅ ECharts (Apache)
+- ✅ MySQL under **clever-cloud** database
 - ✅ Heidisql
 - ✅ selenium
 - ✅ ChromeDriver
@@ -64,3 +64,15 @@ CREATE TABLE `hotsearch`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
 ```
+
+## 📚 Learn Notes
+
+1. Clever Cloud: for MySQL database
+   I am always huge fun for learning new cloud services, I worked with **Clever-cloud** for the this project. It has free tier for users, it is enough for our demo projects. Clever-cloud is a French company, it is a PaaS (Platform as a Service) provider. It is similar to Heroku, but it is more powerful than Heroku.
+
+- It supports many languages, such as Java, **Node.js, PHP, Python**, Go, etc.
+- It also supports many databases, such as **MySQL, PostgreSQL, MongoDB, Redis,** etc.
+- It also supports many frameworks, such as **Flask**, **FASTAPI**, etc.
+- It also supports many other services, such as **Docker**, etc.
+
+I would highly recomment it, especally work with **HeidiSQL** together 👍!
