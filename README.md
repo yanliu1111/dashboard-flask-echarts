@@ -67,7 +67,7 @@ CREATE TABLE `hotsearch`  (
 
 ## 📚 Learn Notes
 
-1. Clever Cloud: for MySQL database
+1. ⛅ Clever Cloud: for MySQL database
    I am always huge fun for learning new cloud services, I worked with **Clever-cloud** for the this project. It has free tier for users, it is enough for our demo projects. Clever-cloud is a French company, it is a PaaS (Platform as a Service) provider. It is similar to Heroku, but it is more powerful than Heroku.
 
 - It supports many languages, such as Java, **Node.js, PHP, Python**, Go, etc.
@@ -76,3 +76,29 @@ CREATE TABLE `hotsearch`  (
 - It also supports many other services, such as **Docker**, etc.
 
 I would highly recomment it, especally work with **HeidiSQL** together 👍!
+
+2. ✨ CTE (Common Table Expression) for contional query
+
+```python
+def get_r1_data():
+    sql = "WITH latest_update AS (SELECT update_time FROM details "\
+          "ORDER BY update_time DESC LIMIT 1), " \
+          "cte AS (SELECT city, confirm FROM details "\
+          "WHERE update_time = (SELECT update_time FROM latest_update) "\
+          "AND province NOT IN ('BeiJing', 'ShangHai', 'TianJing', 'ChongQing') "\
+          "UNION ALL " \
+          "SELECT province AS city, SUM(confirm) AS confirm FROM details "\
+          "WHERE update_time = (SELECT update_time FROM latest_update) "\
+          "AND province IN ('BeiJing', 'ShangHai', 'TianJing', 'ChongQing') "\
+          "GROUP BY province),"\
+          "combined_table AS (SELECT city, confirm FROM cte) "\
+          "SELECT city, confirm FROM combined_table "\
+          "WHERE city IN ('BeiJing', 'ShangHai', 'GuangZhou', 'ShenZhen', 'ChongQing');"
+```
+
+- **CTE** (Common Table Expression) means that we can use the result of a query as a table in another query, AKA subquery factoring.
+- The purpose for the above query is to get Top 5 cities ('BeiJing', 'ShangHai', 'GuangZhou', 'ShenZhen', 'ChongQing') confirmed cases in real time.
+- There is problem in original database, the data for 4 cities ('BeiJing', 'ShangHai', 'TianJing', 'ChongQing') which recorded as sub-provinces, so we need to exclude them in the query firstly, then sum up the confirmed cases when the province is one of the 4 cities ('BeiJing', 'ShangHai', 'TianJing', 'ChongQing').
+- **CTE** was used to create a temporary table, which combined the 4 cities and other cities together, then we can get the Top 5 cities confirmed cases.
+
+  💡 **Note**: **CTE** is only available in MySQL 8.0 or above. I like to use subquery and CTE, make the query more logical and unit, and this is good example for using **CTE** for recommendation. 😀
