@@ -1,21 +1,31 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask import render_template
-
+import utils
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def dashboard():
+    return render_template('main.html')
 
-@app.route('/ajax', methods=['GET','POST'])
-def test():
-    data = request.values.get('name')
-    print(f"data: {data}")
-    return '10000'
+@app.route('/time')
+def gettime():
+    return utils.get_time()
 
-@app.route('/template')
-def template():
-    return render_template('index.html')
+@app.route('/c1')
+def get_c1_data():
+    with app.app_context():
+        data = utils.get_c1_data()
+        response = jsonify({"confirm": data[0], "suspect": data[1], "heal": data[2], "dead": data[3]})
+        confirm = response.json["confirm"]
+        suspect = response.json["suspect"]
+        heal = response.json["heal"]
+        dead = response.json["dead"]
+        print("Confirm:", confirm)
+        print("Suspect:", suspect)
+        print("Heal:", heal)
+        print("Dead:", dead)
+        return response
 
 if __name__ == "__main__":
     app.run()
+    
