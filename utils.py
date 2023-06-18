@@ -85,11 +85,11 @@ def get_r1_data():
           "AND province IN ('北京', '上海', '天津', '重庆') "\
           "GROUP BY province),"\
           "combined_table AS (SELECT city, "\
-          "CASE WHEN city = '北京' THEN 'beijing' "\
-          "WHEN city = '上海' THEN 'shanghai' "\
-          "WHEN city = '广州' THEN 'guangzhou' "\
-          "WHEN city = '深圳' THEN 'shenzhen' "\
-          "WHEN city = '重庆' THEN 'chongqing' "\
+          "CASE WHEN city = '北京' THEN 'Beijing' "\
+          "WHEN city = '上海' THEN 'Shanghai' "\
+          "WHEN city = '广州' THEN 'Guangzhou' "\
+          "WHEN city = '深圳' THEN 'Shenzhen' "\
+          "WHEN city = '重庆' THEN 'Chongqing' "\
           "ELSE city END AS city_en, confirm FROM cte) "\
           "SELECT city_en, confirm FROM combined_table "\
           "WHERE city IN ('北京', '上海', '广州', '深圳', '重庆');"
@@ -97,5 +97,10 @@ def get_r1_data():
     res = query(sql)
     return res
 
+def get_r2_data():
+    sql = "select content from hotsearch order by id desc limit 20"
+    res = query(sql)
+    return res
+
 if __name__ == "__main__":
-    print(get_r1_data())
+    print(get_r2_data())

@@ -1,6 +1,8 @@
+import string
 from flask import Flask, request, jsonify
 from flask import render_template
 import utils
+from jieba.analyse import extract_tags
 app = Flask(__name__)
 
 @app.route('/')
@@ -69,6 +71,20 @@ def get_r1_data():
             city.append(k)
             confirm.append(int(v))
         return jsonify({"city": city,"confirm": confirm})
+
+@app.route('/r2')
+def get_r2_data():
+    with app.app_context():
+        data = utils.get_r2_data() # format: [(string, ,number), ...]
+        d = []
+        for i in data:
+            k = i[0].rstrip(string.digits) # remove the number at the end of the string
+            v = i[0][len(k):] # get the number at the end of the string
+            ks = extract_tags(k) # extract keywords from the string
+            for j in ks:
+                if not j.isdigit():
+                    d.append({"name": j,"value": v})
+        return jsonify({"kws": d})
 
 if __name__ == "__main__":
     app.run()
