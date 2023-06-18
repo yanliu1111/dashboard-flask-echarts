@@ -14,6 +14,7 @@
 - ✅ XPath: `find_elements`
 - ✅ jquery
 - ✅ Ajax
+- ✅ SQL-**CTE** (Common Table Expression) / Subquery
 
 ## MySQL Database
 
