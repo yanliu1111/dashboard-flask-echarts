@@ -61,10 +61,23 @@ function get_l2_data() {
   });
 }
 
+function get_r1_data() {
+  $.ajax({
+    url: "/r1",
+    success: function (data) {
+      option_right1.xAxis.data = data.city;
+      option_right1.series[0].data = data.confirm;
+      ec_right1.setOption(option_right1);
+    },
+    error: function (xhr, type, errorThrown) {},
+  });
+}
+
 getTime();
 get_c1_data();
 get_c2_data();
 get_l1_data();
 get_l2_data();
+get_r1_data();
 
 // setInterval(getTime, 1000);
