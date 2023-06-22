@@ -119,6 +119,16 @@ def get_r1_data():
 
   💡 **Note**: **CTE** is only available in MySQL 8.0 or above. I like to use subquery and CTE, make the query more logical and unit, and this is good example for using **CTE** for recommendation. 😀
 
+- Here is the **example** for CTE (Common Table Expression) for contional query. <br>
+
+<img
+style="display: block;
+margin-left: auto;
+margin-right: auto;"
+src="assets/example.jpg"
+alt="roadmap">
+</img> <br>
+
 3. 📊 ECharts (Apache)
 
    **ECharts** is a free, powerful charting and visualization library offering an easy way of adding intuitive, interactive, and highly customizable charts to your commercial products. It is written in pure JavaScript and based on zrender, which is a whole new lightweight canvas library.
