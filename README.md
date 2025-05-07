@@ -136,3 +136,4 @@ alt="roadmap">
    In this project, I downloaded `echarts.min.js` and `china.js` and `worldcloud.js` as the main js files for the dashboard.
 
    Then, for 6 pattern with different charts-type and custom design, I downloaded the source code from [ECharts](https://echarts.apache.org/examples/en/index.html), and modified them to fit my project.
+   update
