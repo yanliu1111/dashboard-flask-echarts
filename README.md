@@ -1,3 +1,5 @@
+
+
 # Dashboard with Flask and ECharts
 
 ## 📊 Introduction
@@ -31,7 +33,7 @@ alt="roadmap">
 
 ## MySQL Database
 
-- Database name: `history` and `details` and `hotsearch`
+- Table names: `history` and `details` and `hotsearch`
 
 ```sql
 -- create new table
